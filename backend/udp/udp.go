@@ -108,7 +108,7 @@ func (m *UdpBackend) Init(extIface *net.Interface, extIaddr net.IP, extEaddr net
 		return nil, err
 	}
 
-	m.conn, err = net.ListenUDP("udp4", &net.UDPAddr{Port: m.cfg.Port})
+	m.conn, err = net.ListenUDP("udp4", &net.UDPAddr{IP: extIaddr, Port: m.cfg.Port})
 	if err != nil {
 		return nil, fmt.Errorf("failed to start listening on UDP socket: %v", err)
 	}
